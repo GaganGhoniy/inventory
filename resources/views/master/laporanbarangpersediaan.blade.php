@@ -23,7 +23,7 @@
                                 <th><b>Nama Barang</b></th>
                                 <th><b>Sisa Unit</b></th>
                                 <th><b>Harga</b></th>
-                                <th><b>Total</b></th>
+                                <th><b>Total Harga</b></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,8 +32,23 @@
                                 <td>{{ $item->kode_barang }}</td>
                                 <td><?php echo wordwrap($item->nama_barang,40,"<br>\n"); ?></td>
                                 <td>{{ $item->stok }}</td>
-                                <td>Rp. {{ number_format( $item->masuk[0]->harga) }}</td>
-                                <td>Rp. {{ number_format($item->stok * $item->masuk[0]->harga) }}</td>
+                                <td>
+                                    @if(isset($item->masuk) && count($item->masuk) > 0)
+                                       Rp. {{number_format($item->masuk[0]->harga)}}
+                                       @else
+                                        Rp. 0
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(isset($item->masuk) && count($item->masuk) > 0)
+                                       Rp. {{number_format($item->stok * $item->masuk[0]->harga)}}
+                                       @else
+                                        Rp. 0
+                                    @endif
+                                </td>
+                                
+                                {{-- <td>Rp. {{ number_format( $item->masuk[0]->harga) }}</td> --}}
+                                {{-- <td>Rp. {{ number_format($item->stok * $item->masuk[0]->harga) }}</td> --}}
                             </tr>
                             @endforeach
                         </tbody>

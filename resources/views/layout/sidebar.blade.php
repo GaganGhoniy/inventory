@@ -1,8 +1,8 @@
 <div id="left-sidebar" class="sidebar">
         <a href="javascript:void(0);" class="menu_toggle"><i class="fa fa-angle-left"></i></a>
         <div class="navbar-brand">
-                <a href="{{route('dashboard.index')}}"><img src="{{ asset('assets/images/icon.svg') }}" alt="Mooli Logo"
-                                class="img-fluid logo"><span>Gudang {{ config('app.name') }}</span></a>
+                <a href="{{route('dashboard.index')}}"><img src="{{ asset('assets/images/Logo Dakonan.png') }}" alt="Mooli Logo"
+                                class="img-fluid logo"><span>{{ config('app.name') }} Dakonan Mas</span></a>
                 <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i
                                 class="fa fa-close"></i></button>
         </div>
@@ -40,13 +40,12 @@
                                 <li class="header">Main</li>
                                 <li class="{{ Request::segment(1) === 'dashboard' ? 'active' : null }}"><a
                                                 href="{{route('dashboard.index')}}"><i class="fa fa-dashboard"></i>
-                                                <span>Dashboard</span></a>
+                                                <span>Beranda</span></a>
                                 </li>
                                 @hasanyrole('root admin|super admin|Karyawan Divisi Gudang')
                                 <li class="{{ Request::segment(1) === 'users' ? 'active' : null }}">
                                         <a href="#uiElements" class="has-arrow"><i
-                                                        class="fa fa-diamond"></i><span>Administrator
-                                                        Control</span></a>
+                                                        class="fa fa-diamond"></i><span>Kelola Administrasi</span></a>
                                         <ul>
                                                 <li class="{{ Request::segment(2) === 'user' ? 'active' : null }}"><a
                                                                 href="{{route('users.user')}}">Pengguna</a></li>
@@ -66,7 +65,7 @@
                                                 <li class="{{ Request::segment(2) === 'merk' ? 'active' : null }}"><a
                                                                 href="{{route('master.merk')}}">Merk Barang</a></li>
                                                 <li class="{{ Request::segment(2) === 'supliyer' ? 'active' : null }}">
-                                                        <a href="{{route('master.supliyer')}}">Data Supliyer</a>
+                                                        <a href="{{route('master.supliyer')}}">Data Supplier</a>
                                                 </li>
                                                 <li class="{{ Request::segment(2) === 'barang' ? 'active' : null }}"><a
                                                                 href="{{route('master.barang')}}">Data Barang</a></li>

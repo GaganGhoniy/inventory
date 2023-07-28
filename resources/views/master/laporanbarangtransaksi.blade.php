@@ -22,7 +22,8 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-hover dataTable js-exportable" style="border: 1px solid;">
                         <thead>
-                            <th colspan="2" style="text-align: center;"><b>ID BARANG</b></th>
+                            <th colspan="1" style="text-align: center;"><b>KODE BARANG</b></th>
+                            <th colspan="1" style="text-align: center;"><b>NAMA BARANG</b></th>
                             <th colspan="3" style="text-align: center;"><b>BARANG MASUK</b></th>
                             <th colspan="4" style="text-align: center;"><b>BARANG KELUAR</b></th>
                             <th colspan="3" style="text-align: center;"><b>TOTAL AKHIR SISA BARANG</b></th>

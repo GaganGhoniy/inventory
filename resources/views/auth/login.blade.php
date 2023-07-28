@@ -5,8 +5,8 @@
 @section('content')
 
 <div class="auth_brand">
-    <a class="navbar-brand" href="#"><img src="{{ asset('assets/images/icon.svg') }}" width="50"
-            class="d-inline-block align-top mr-2" alt="">Admin Gudang</a>
+    <a class="navbar-brand d-flex justify-content-center" href="#"><img src="{{ asset('assets/images/icon.svg') }}" width="50"
+            class="d-inline-block align-top mr-2" alt="">Inventori PT. Dakonan Mas</a>
 </div>
 <div class="card">
     <div class="header">

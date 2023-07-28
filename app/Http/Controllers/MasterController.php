@@ -9,6 +9,7 @@ use App\Masuk;
 use App\Merk;
 use App\Supliyer;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MasterController extends Controller
 {
@@ -32,12 +33,12 @@ class MasterController extends Controller
 
     public function barang()
     {
-        $data = Barang::with('merk', 'kategori','supliyer')->get();
+        $data = Barang::with('merk', 'kategori', 'supliyer')->get();
         $kat = Kategori::get();
         $merk = Merk::get();
         $supliyer = Supliyer::get();
         // dd($data);
-        return view('master.barang', compact('data','kat','merk','supliyer'));
+        return view('master.barang', compact('data', 'kat', 'merk', 'supliyer'));
     }
 
     public function barangMasuk()
@@ -46,7 +47,7 @@ class MasterController extends Controller
         // dd($data);
         $barang = Barang::with('kategori')->get();
         // dd($barang);
-        return view('master.barangmasuk', compact('data','barang'));
+        return view('master.barangmasuk', compact('data', 'barang'));
     }
 
     public function barangKeluar()
@@ -54,7 +55,7 @@ class MasterController extends Controller
         $data = Keluar::with('barang')->get();
         // dd($data);
         $barang = Barang::get();
-        return view('master.barangkeluar', compact('data','barang'));
+        return view('master.barangkeluar', compact('data', 'barang'));
     }
 
     public function laporanBarangMasuk()
@@ -73,14 +74,14 @@ class MasterController extends Controller
 
     public function laporanBarangTransaksi()
     {
-        $barang = Barang::with('masuk','keluar')->get();
+        $barang = Barang::with('masuk', 'keluar')->get();
         // dd($barang);
         return view('master.laporanbarangtransaksi', compact('barang'));
     }
 
     public function laporanBarangPersediaan()
     {
-        $barang = Barang::with(['masuk'=>function ($query) {
+        $barang = Barang::with(['masuk' => function ($query) {
             return $query->where('stok_akhir', '!=', 0);
         }])->get();
         // dd($barang);
@@ -92,5 +93,41 @@ class MasterController extends Controller
         $barang = Barang::with('kategori')->get();
         // dd($barang);
         return view('master.laporanbarangrestok', compact('barang'));
+    }
+
+    public function cetaklaporanBarangMasuk(){
+        
+    }
+
+    public function cetaklaporanBarangKeluar(){
+        
+    }
+
+    public function cetaklaporanBarangTransaksi(){
+        
+    }
+
+    public function cetaklaporanbarangpersediaan()
+    {
+        // $dompdf = new Dompdf();
+        $barang = Barang::with(['masuk' => function ($query) {
+            return $query->where('stok_akhir', '!=', 0);
+        }])->get();
+        $date = date("d-m-Y");
+
+        // Convert $barang object to array
+        // $barangArray = $barang->toArray();
+        // dd($barang);
+        $dompdf = PDF::loadView('master.laporanbarangpersediaanpdf', ['barang' => $barang, 'date' => $date]);
+        $dompdf->setPaper('A4', 'potrait');
+        $dompdf->render();
+        return $dompdf->stream('laporanbarangpersediaan.pdf');
+        // return $dompdf->stream('laporanbarangpersediaan.pdf');
+        // return view('master.pdf', ['barang' => $barang, 'date' => $date]); tampilan buat edit
+
+    }
+
+    public function cetaklaporanBarangRestok(){
+        
     }
 }

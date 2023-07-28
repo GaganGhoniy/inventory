@@ -11,19 +11,24 @@
         <div class="card">
             <div class="header">
                 <h2>Laporan Barang Masuk</h2>
-                    <button type="button" id="print" style="float:right; border-radius:5px;" class="btn btn-primary"><i class="fa fa-print"></i></button>
+                    <a href="{{route('laporan.cetakmasuk')}}" type="button" style="float:right; border-radius:5px;" class="btn btn-primary"><i class="fa fa-print"></i></a>
             </div>
 
             <div class="body">
                 <div class="table-responsive">
                     <table class="table table-striped table-hover dataTable js-exportable">
+                        <thead>
+                            <th colspan="1" style="text-align: center;"><b>KODE BARANG</b></th>
+                            <th colspan="1" style="text-align: center;"><b>NAMA BARANG</b></th>
+                            <th colspan="4" style="text-align: center;"><b>BARANG MASUK</b></th>
+                        </thead>
                         <tbody>
                             <?php $tot_item = 0; $tot_harga = 0; $tot_total_harga = 0; ?>
                             @foreach ($barang as $item)
                             <tr style="text-align: center;">
                                 <td><b>{{ $item->kode_barang }}</b></td>
                                 <td><b><?php echo wordwrap($item->nama_barang,40,"<br>\n"); ?></b></td>
-                                <td><b>Barang Masuk</b></td>
+                                <td><b>Unit</b></td>
                                 <td><b>Harga</b></td>
                                 <td><b>Total</b></td>
                             </tr>

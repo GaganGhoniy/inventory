@@ -49,10 +49,15 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/laporan')->group(function () {
         Route::get('laporan-barang-masuk',                'MasterController@laporanBarangMasuk')->name('laporan.masuk');
+        Route::get('laporan-barang-masuk-cetak',                'MasterController@cetaklaporanBarangMasuk')->name('laporan.cetakmasuk');
         Route::get('laporan-barang-keluar',                'MasterController@laporanBarangKeluar')->name('laporan.keluar');
+        Route::get('laporan-barang-keluar-cetak',                'MasterController@cetaklaporanBarangKeluar')->name('laporan.cetakkeluar');
         Route::get('laporan-barang-transaksi',                'MasterController@laporanBarangTransaksi')->name('laporan.transaksi');
+        Route::get('laporan-barang-transaksi-cetak',                'MasterController@cetaklaporanBarangTransaksi')->name('laporan.cetaktransaksi');
         Route::get('laporan-barang-persediaan',                'MasterController@laporanBarangPersediaan')->name('laporan.persediaan');
+        Route::get('laporan-barang-persediaan-cetak',                'MasterController@cetaklaporanbarangpersediaan')->name('laporan.cetaklaporanbarangpersediaan');
         Route::get('laporan-barang-restok',                'MasterController@laporanBarangRestok')->name('laporan.restok');
+        Route::get('laporan-barang-restok-cetak',                'MasterController@cetaklaporanBarangRestok')->name('laporan.cetaklaporanBarangRestok');
     });
 
 

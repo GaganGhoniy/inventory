@@ -11,7 +11,7 @@
         <div class="card">
             <div class="header">
                 <h2>Laporan Persediaan Barang</h2>
-                    <button type="button" id="print" style="float:right; border-radius:5px;" class="btn btn-primary"><i class="fa fa-print"></i></button>
+                    <a href="{{route('laporan.cetaklaporanbarangpersediaan')}}" type="button" style="float:right; border-radius:5px;" class="btn btn-primary"><i class="fa fa-print"></i></a>
             </div>
 
             <div class="body">

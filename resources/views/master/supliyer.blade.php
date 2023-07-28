@@ -10,12 +10,12 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="header">
-                <h2>Supliyer</h2>
+                <h2>Supplier</h2>
                 <ul class="header-dropdown dropdown">
 
                     <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
                     <li><button data-toggle="modal" data-target="#modalSupliyer" type="button"
-                            style="float:right; border-radius:5px;" class="btn btn-primary">Tambah Supliyer</button>
+                            style="float:right; border-radius:5px;" class="btn btn-primary">Tambah Supplier</button>
                     </li>
                     </li>
                 </ul>
@@ -27,9 +27,9 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Supliyer</th>
-                                <th>Alamat Supliyer</th>
-                                <th>Telp Supliyer</th>
+                                <th>Nama Supplier</th>
+                                <th>Alamat Supplier</th>
+                                <th>Telp Supplier</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -58,22 +58,22 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title h4" id="myLargeModalLabel">Tambah Supliyer</h5>
+                            <h5 class="modal-title h4" id="myLargeModalLabel">Tambah Supplier</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">×</span></button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="title" class="control-label">Nama Supliyer</label>
+                                <label for="title" class="control-label">Nama Supplier</label>
                                 <input type="hidden" id="id">
                                 <input type="text" placeholder="Nama Supliyer" id="nama" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="title" class="control-label">Alamat Supliyer</label>
+                                <label for="title" class="control-label">Alamat Supplier</label>
                                 <input type="text" placeholder="Alamat Supliyer" id="alamat" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="title" class="control-label">No. Telp Supliyer</label>
+                                <label for="title" class="control-label">No. Telp Supplier</label>
                                 <input type="numeric" placeholder="Telp Supliyer" id="telp" class="form-control" required>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">

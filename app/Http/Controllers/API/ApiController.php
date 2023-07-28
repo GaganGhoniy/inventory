@@ -605,4 +605,10 @@ class ApiController extends Controller
             return response(['message' => 'Gagal set filter', 'system' => $th], 500);
         }
     }
+
+        // public function cetak()
+        // {
+
+        // }
+
 }

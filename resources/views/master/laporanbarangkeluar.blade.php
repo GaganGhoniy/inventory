@@ -26,13 +26,18 @@
             <div class="body">
                 <div class="table-responsive">
                     <table class="table table-striped table-hover dataTable js-exportable">
+                        <thead>
+                            <th colspan="1" style="text-align: center;"><b>KODE BARANG</b></th>
+                            <th colspan="1" style="text-align: center;"><b>NAMA BARANG</b></th>
+                            <th colspan="4" style="text-align: center;"><b>BARANG kELUAR</b></th>
+                        </thead>
                         <tbody>
                             <?php $tot_item = 0; $tot_harga = 0; $tot_total_harga = 0; ?>
                             @foreach ($barang as $item)
                             <tr style="text-align: center;">
                                 <td><b>{{ $item->kode_barang }}</b></td>
                                 <td><b><?php echo wordwrap($item->nama_barang,40,"<br>\n"); ?></b></td>
-                                <td><b>Barang Keluar</b></td>
+                                <td><b>Unit</b></td>
                                 @hasanyrole('root admin|super admin|Kepala Divisi Gudang')
                                 <td><b>Laba</b></td>
                                 <td><b>Harga</b></td>

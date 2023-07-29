@@ -1,14 +1,26 @@
-<table border="1" style="margin: 0 auto">
-    <thead>
-        <tr>
-            <th colspan="5">
-                <h1 style="text-align: center;">PT. DAKONAN MAS <br> Laporan Barang Butuh Re-Stok</h1>
-                <hr>
-                <p>Dicetak Pada {{ $date }}</p>
-            </th>
-        </tr>
+<table style="margin: 0 auto; width: 700px;">
+    <tr>
+        <td style="width: auto">
+            {{-- <img src="{{ asset('assets/images/Logo Dakonan.png') }}" alt=""> --}}
+        </td>
+        <td>
+            <h1 style="text-align: center; margin-top: 30px">PT. DAKONAN MAS <br> Laporan Barang Butuh Re-Stok</h1>
+        </td>
+        <td style="width: auto">
+            
+        </td>
     </tr>
-    <tr style="text-align: center;">
+    <tr>
+        <td colspan="3">
+            <hr>
+            <p style="text-align: center;">Ruko Green Mansion, Jl. Ambeng-Ambeng Selatan, Ngingas, Kec. Waru, Kabupaten Sidoarjo, Jawa Timur</p>
+            <p style="text-align: center;">Dicetak Pada {{ $date }}</p>
+        </td>
+    </tr>
+</table>
+<table border="1" style="margin: 0 auto; width: 700px; font-size: 12px">
+    <thead>
+    <tr style="text-align: center; background-color: D8D9DA;">
         <th><b>Kode Barang</b></th>
         <th><b>Merk Barang</b></th>
         <th><b>Nama Barang</b></th>
@@ -22,15 +34,41 @@
         @foreach ($barang as $item)
         @if ((int) $item->stok <= (int) $item->safety_stock)
             <tr style="text-align: center;">
-                <td>{{ $item->kode_barang }}</td>
-                <td><b>{{ $item->merk->merk }}</b></td>
-                <td><?php echo wordwrap($item->nama_barang, 35, "<br>\n"); ?></td>
-                <td><?php echo wordwrap($item->supliyer->nama, 35, "<br>\n"); ?></td>
-                <td>{{ $item->stok }}</td>
-                <td>{{ $item->safety_stock }}</td>
-                <td>{{ $item->kategori->lama_restok }} Hari</td>
+                <td style="text-align: left; padding: 4px">{{ $item->kode_barang }}</td>
+                <td style="text-align: left; padding: 4px"><b>{{ $item->merk->merk }}</b></td>
+                <td style="text-align: left; padding: 4px"><?php echo wordwrap($item->nama_barang, 35, "<br>\n"); ?></td>
+                <td style="text-align: left; padding: 4px"><?php echo wordwrap($item->supliyer->nama, 35, "<br>\n"); ?></td>
+                <td style="text-align: center; padding: 4px">{{ $item->stok }}</td>
+                <td style="text-align: center; padding: 4px">{{ $item->safety_stock }}</td>
+                <td style="text-align: center; padding: 4px">{{ $item->kategori->lama_restok }} Hari</td>
             </tr>
         @endif
         @endforeach
+    </tbody>
+</table>
+
+<table style="margin: 0 auto; width: 700px;" >
+    <thead>
+    <tr style="text-align: center;">
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th colspan="7">
+                <p style="text-align: right;">Yang Bertanda Tangan</p>
+                <br>
+                <br>
+                <br>
+                <br>
+                <p style="text-align: right;">....................</p>
+            </th>
+        </tr>
     </tbody>
 </table>

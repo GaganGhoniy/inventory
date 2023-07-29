@@ -12,9 +12,7 @@
             <div class="header">
                 <h2>Laporan Transaksi Barang</h2>
                 <ul class="header-dropdown dropdown" id="tes2">
-
-                    <li><button type="button" id="print" style="float:right; border-radius:5px;" class="btn btn-primary"><i class="fa fa-print"></i></button>
-                    </li>
+                    <a href="{{ route('laporan.cetaklaporanBarangTransaksi') }}" type="button" style="float:right; border-radius:5px;" class="btn btn-primary"><i class="fa fa-print"></i></a>
                 </ul>
             </div>
 

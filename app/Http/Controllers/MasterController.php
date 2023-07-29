@@ -119,6 +119,17 @@ class MasterController extends Controller
 
     public function cetaklaporanBarangTransaksi()
     {
+        $barang = Barang::with('masuk', 'keluar')->get();
+        $date = date("d-m-Y");
+
+        // Download PDF
+        // $dompdf = PDF::loadView('master.laporanbarangtransaksipdf', ['barang' => $barang, 'date' => $date]);
+        // $dompdf->setPaper('A4', 'landscape');
+        // $dompdf->render();
+        // return $dompdf->stream('laporanbarangtransaksi.pdf');
+
+        // Buat View
+        return view('master.laporanbarangtransaksipdf', ['barang' => $barang, 'date' => $date]);
     }
 
     public function cetaklaporanbarangpersediaan()
@@ -132,12 +143,15 @@ class MasterController extends Controller
         // Convert $barang object to array
         // $barangArray = $barang->toArray();
         // dd($barang);
+
+        // Download PDF
         $dompdf = PDF::loadView('master.laporanbarangpersediaanpdf', ['barang' => $barang, 'date' => $date]);
         $dompdf->setPaper('A4', 'potrait');
         $dompdf->render();
         return $dompdf->stream('laporanbarangpersediaan.pdf');
-        // return $dompdf->stream('laporanbarangpersediaan.pdf');
-        // return view('master.pdf', ['barang' => $barang, 'date' => $date]); tampilan buat edit
+
+        // Buat View
+        // return view('master.laporanbarangpersediaanpdf', ['barang' => $barang, 'date' => $date]);
 
     }
 
@@ -156,11 +170,14 @@ class MasterController extends Controller
         } else {
             $barang = Barang::with('kategori')->get();
         }
-        // Generate the PDF
-        // $pdf = new Dompdf();
-        return view('master.laporanbarangrestokpdf', ['barang' => $barang, 'date' => $date]);
+        
+        // Dowonload PDF
+        $dompdf = PDF::loadView('master.laporanbarangrestokpdf', ['barang' => $barang, 'date' => $date]);
+        $dompdf->setPaper('A4', 'potrait');
+        $dompdf->render();
+        return $dompdf->stream('laporanbarangrestok.pdf');
 
-        // Download the PDF
-        // return $pdf->stream('laporan_barang_restok.pdf');
+        // Buat View
+        // return view('master.laporanbarangrestokpdf', ['barang' => $barang, 'date' => $date]);
     }
 }

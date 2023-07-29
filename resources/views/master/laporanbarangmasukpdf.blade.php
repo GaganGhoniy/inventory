@@ -1,17 +1,10 @@
-@extends('layout.master')
-@section('parentPageTitle', 'Laporan Barang Masuk')
-@section('title', 'Laporan Barang Masuk')
-
-
-@section('content')
-
 
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
             <div class="header">
                 <h2>Laporan Barang Masuk</h2>
-                <a href="{{route('laporan.cetaklaporanBarangMasuk')}}" type="button" style="float:right; border-radius:5px;" class="btn btn-primary"><i class="fa fa-print"></i></a>
+                <a href="{{ route('laporan.cetaklaporanBarangMasuk') }}" type="button" style="float:right; border-radius:5px;" class="btn btn-primary"><i class="fa fa-print"></i></a>
             </div>
 
             <div class="body">

@@ -45,7 +45,7 @@ class MasterController extends Controller
     {
         $data = Masuk::with('barang')->get();
         // dd($data);
-        $barang = Barang::with('kategori')->get();
+        $barang = Barang::with('kategori', 'merk')->get();
         // dd($barang);
         return view('master.barangmasuk', compact('data', 'barang'));
     }
@@ -81,7 +81,7 @@ class MasterController extends Controller
 
     public function laporanBarangPersediaan()
     {
-        $barang = Barang::with(['masuk' => function ($query) {
+        $barang = Barang::with(['masuk', 'keluar' => function ($query) {
             return $query->where('stok_akhir', '!=', 0);
         }])->get();
         // dd($barang);
@@ -90,21 +90,35 @@ class MasterController extends Controller
 
     public function laporanBarangRestok()
     {
+        $searchKeyword = '';
         $barang = Barang::with('kategori')->get();
         // dd($barang);
-        return view('master.laporanbarangrestok', compact('barang'));
+        return view('master.laporanbarangrestok', compact('barang', 'searchKeyword'));
     }
 
-    public function cetaklaporanBarangMasuk(){
-        
+    public function laporanBarangRestokSearch(Request $request)
+    {
+        $searchKeyword = $request->get('search');
+
+        $barang = Barang::with('kategori')
+            ->whereHas('merk', function ($query) use ($searchKeyword) {
+                $query->where('merk', $searchKeyword);
+            })
+            ->get();
+        // dd($searchKeyword);
+        return view('master.laporanbarangrestok', compact('barang', 'searchKeyword'));
     }
 
-    public function cetaklaporanBarangKeluar(){
-        
+    public function cetaklaporanBarangMasuk()
+    {
     }
 
-    public function cetaklaporanBarangTransaksi(){
-        
+    public function cetaklaporanBarangKeluar()
+    {
+    }
+
+    public function cetaklaporanBarangTransaksi()
+    {
     }
 
     public function cetaklaporanbarangpersediaan()
@@ -127,7 +141,26 @@ class MasterController extends Controller
 
     }
 
-    public function cetaklaporanBarangRestok(){
-        
+    public function cetaklaporanBarangRestok(Request $request)
+    {
+        $searchKeyword = $request->get('search');
+        $date = date("d-m-Y");
+
+        // dd($searchKeyword);
+        if ($searchKeyword !== null) {
+            $barang = Barang::with('kategori')
+                ->whereHas('merk', function ($query) use ($searchKeyword) {
+                    $query->where('merk', $searchKeyword);
+                })
+                ->get();
+        } else {
+            $barang = Barang::with('kategori')->get();
+        }
+        // Generate the PDF
+        // $pdf = new Dompdf();
+        return view('master.laporanbarangrestokpdf', ['barang' => $barang, 'date' => $date]);
+
+        // Download the PDF
+        // return $pdf->stream('laporan_barang_restok.pdf');
     }
 }

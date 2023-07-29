@@ -18,15 +18,17 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
-                            <th colspan="1" style="text-align: center;"><b>KODE BARANG</b></th>
-                            <th colspan="1" style="text-align: center;"><b>NAMA BARANG</b></th>
-                            <th colspan="4" style="text-align: center;"><b>BARANG MASUK</b></th>
+                            <th colspan="1" style="text-align: center;"><b>Kode Barang</b></th>
+                            <th colspan="1" style="text-align: center;"><b>Merk Barang</b></th>
+                            <th colspan="1" style="text-align: center;"><b>Nama Barang</b></th>
+                            <th colspan="4" style="text-align: center;"><b>Barang Masuk</b></th>
                         </thead>
                         <tbody>
                             <?php $tot_item = 0; $tot_harga = 0; $tot_total_harga = 0; ?>
                             @foreach ($barang as $item)
                             <tr style="text-align: center;">
                                 <td><b>{{ $item->kode_barang }}</b></td>
+                                <td><b>{{ $item->merk->merk }}</b></td>
                                 <td><b><?php echo wordwrap($item->nama_barang,40,"<br>\n"); ?></b></td>
                                 <td><b>Unit</b></td>
                                 <td><b>Harga</b></td>
@@ -40,14 +42,14 @@
                                 $sum_total_harga = $sum_total_harga + $masuk->total_harga;
                             ?>
                             <tr>
-                                <td colspan="2" style="text-align: center;">{{ $masuk->created_at}}</td>
+                                <td colspan="3" style="text-align: center;">{{ $masuk->created_at}}</td>
                                 <td  style="text-align: center;">{{ $masuk->total_item }}</td>
                                 <td style="text-align: right;">Rp. {{ number_format($masuk->harga,0,'','.') }}</td>
                                 <td style="text-align: right;">Rp. {{ number_format($masuk->total_harga,0,'','.') }}</td>
                             </tr>
                             @endforeach
                             <tr>
-                                <td colspan="2" style="text-align: right;"><b>Jumlah</b></td>
+                                <td colspan="3" style="text-align: right;"><b>Jumlah</b></td>
                                 <td style="text-align: center;"><b>{{ $sum_item }}</b></td>
                                 <td style="text-align: right;"><b>Rp. {{ number_format($sum_harga,0,'','.') }}</b></td>
                                 <td style="text-align: right;"><b>Rp. {{ number_format($sum_total_harga,0,'','.') }}</b></td>
@@ -59,7 +61,7 @@
                             ?>
                             @endforeach
                             <tr>
-                                <td colspan="2" style="text-align: right;"><b>Total Transaksi Masuk</b></td>
+                                <td colspan="3" style="text-align: right;"><b>Total Transaksi Masuk</b></td>
                                 <td style="text-align: center;"><b>{{ $tot_item }}</b></td>
                                 <td style="text-align: right;"><b>Rp. {{ number_format($tot_harga,0,'','.') }}</b></td>
                                 <td style="text-align: right;"><b>Rp. {{ number_format($tot_total_harga,0,'','.') }}</b></td>

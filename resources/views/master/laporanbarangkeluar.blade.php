@@ -27,15 +27,17 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
-                            <th colspan="1" style="text-align: center;"><b>KODE BARANG</b></th>
-                            <th colspan="1" style="text-align: center;"><b>NAMA BARANG</b></th>
-                            <th colspan="4" style="text-align: center;"><b>BARANG kELUAR</b></th>
+                            <th colspan="1" style="text-align: center;"><b>Kode Barang</b></th>
+                            <th colspan="1" style="text-align: center;"><b>Merk Barang</b></th>
+                            <th colspan="1" style="text-align: center;"><b>Nama Barang</b></th>
+                            <th colspan="4" style="text-align: center;"><b>Barang keluar</b></th>
                         </thead>
                         <tbody>
                             <?php $tot_item = 0; $tot_harga = 0; $tot_total_harga = 0; ?>
                             @foreach ($barang as $item)
                             <tr style="text-align: center;">
                                 <td><b>{{ $item->kode_barang }}</b></td>
+                                <td><b>{{ $item->merk->merk }}</b></td>
                                 <td><b><?php echo wordwrap($item->nama_barang,40,"<br>\n"); ?></b></td>
                                 <td><b>Unit</b></td>
                                 @hasanyrole('root admin|super admin|Kepala Divisi Gudang')
@@ -53,7 +55,7 @@
                                     $sum_total_harga = $sum_total_harga + $keluar->total_harga;
                                 ?>
                             <tr>
-                                <td colspan="2" style="text-align: center;">{{ $keluar->created_at}}</td>
+                                <td colspan="3" style="text-align: center;">{{ $keluar->created_at}}</td>
                                 <td style="text-align: center;">{{ $keluar->total_item }}</td>
                                 @hasanyrole('root admin|super admin|Kepala Divisi Gudang')
                                 <td style="text-align: center;">@if ($keluar->persen != null) {{ $keluar->persen }}% @else 0% @endif</td>
@@ -65,7 +67,7 @@
                             @endif
                             @endforeach
                             <tr>
-                                <td colspan="2" style="text-align: right;"><b>Jumlah</b></td>
+                                <td colspan="3" style="text-align: right;"><b>Jumlah</b></td>
                                 <td style="text-align: center;"><b>{{ $sum_item }}</b></td>
                                 @hasanyrole('root admin|super admin|Kepala Divisi Gudang')
                                 <td style="text-align: center;"><b></b></td>
@@ -81,7 +83,7 @@
                                 ?>
                             @endforeach
                             <tr>
-                                <td colspan="2" style="text-align: right;"><b>Total Transaksi Keluar</b></td>
+                                <td colspan="3" style="text-align: right;"><b>Total Transaksi Keluar</b></td>
                                 <td style="text-align: center;"><b>{{ $tot_item }}</b></td>
                                 @hasanyrole('root admin|super admin|Kepala Divisi Gudang')
                                 <td style="text-align: center;"><b></b></td>

@@ -22,17 +22,19 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-hover dataTable js-exportable" style="border: 1px solid;">
                         <thead>
-                            <th colspan="1" style="text-align: center;"><b>KODE BARANG</b></th>
-                            <th colspan="1" style="text-align: center;"><b>NAMA BARANG</b></th>
-                            <th colspan="3" style="text-align: center;"><b>BARANG MASUK</b></th>
-                            <th colspan="4" style="text-align: center;"><b>BARANG KELUAR</b></th>
-                            <th colspan="3" style="text-align: center;"><b>TOTAL AKHIR SISA BARANG</b></th>
+                            <th colspan="1" style="text-align: center;"><b>Kode Barang</b></th>
+                            <th colspan="1" style="text-align: center;"><b>Merk Barang</b></th>
+                            <th colspan="1" style="text-align: center;"><b>Nama Barang</b></th>
+                            <th colspan="3" style="text-align: center;"><b>Barang Masuk</b></th>
+                            <th colspan="4" style="text-align: center;"><b>Barang Keluar</b></th>
+                            <th colspan="3" style="text-align: center;"><b>Persediaan Barang</b></th>
                         </thead>
                         <tbody>
                             <?php $tot_item = 0; $tot_harga = 0; $tot_total_harga = 0; $tot_item_kel = 0; $tot_harga_kel = 0; $tot_total_harga_kel = 0; $tot_item_sis = 0;  $tot_total_harga_sis = 0;?>
                             @foreach ($barang as $item)
                                 <tr style="text-align: center;">
                                     <td ><b>{{ $item->kode_barang }}</b></td>
+                                    <td><b>{{ $item->merk->merk }}</b></td>
                                     <td><b><?php echo wordwrap($item->nama_barang,30,"<br>\n"); ?></b></td>
                                     <td><b>Unit</b></td>
                                     <td><b>Harga</b></td>
@@ -55,7 +57,7 @@
                                     $sum_total_harga_sis = $sum_total_harga_sis +($masuk->stok_akhir * $masuk->harga);
                                 ?>
                                 <tr>
-                                    <td colspan="2" style="text-align: center;">{{ $masuk->created_at}}</td>
+                                    <td colspan="3" style="text-align: center;">{{ $masuk->created_at}}</td>
                                     <td style="text-align: center;">@if($masuk){{ $masuk->total_item }}@else Rp. 0 @endif</td>
                                     <td style="text-align: right;">@if($masuk)Rp. {{ number_format($masuk->harga,0,'','.') }}@else Rp. 0 @endif</td>
                                     <td style="text-align: right;">@if($masuk)Rp. {{ number_format($masuk->total_harga,0,'','.') }}@else Rp. 0 @endif</td>
@@ -75,7 +77,7 @@
                                     $sum_total_harga_kel = $sum_total_harga_kel + $keluar->total_harga;
                                 ?>
                                 <tr>
-                                    <td colspan="2" style="text-align: center;">{{ $keluar->created_at}}</td>
+                                    <td colspan="3" style="text-align: center;">{{ $keluar->created_at}}</td>
                                     <td style="text-align: center;">0</td>
                                     <td style="text-align: right;">Rp. 0</td>
                                     <td style="text-align: right;">Rp. 0</td>
@@ -93,7 +95,7 @@
                                     // $sum_total_harga_sis = $sum_total_harga * $sum_item_sis;
                                 ?>
                                 <tr>
-                                    <td colspan="2" style="text-align: right;"><b>Jumlah</b></td>
+                                    <td colspan="3" style="text-align: right;"><b>Jumlah</b></td>
                                     <td style="text-align: center;"><b>{{ $sum_item }}</b></td>
                                     <td style="text-align: right;">
                                         {{-- <b>Rp. {{ number_format($sum_harga,0,'','.') }}</b> --}}
@@ -120,7 +122,7 @@
                             @endforeach
 
                             <tr>
-                                <td colspan="2" style="text-align: right;"><b>Total Transaksi Persediaan</b></td>
+                                <td colspan="3" style="text-align: right;"><b>Total Transaksi Persediaan</b></td>
                                 <td style="text-align: center;"><b>{{ $tot_item }}</b></td>
                                 <td style="text-align: right;">
                                     {{-- <b>Rp. {{ number_format($tot_harga,0,'','.') }}</b> --}}

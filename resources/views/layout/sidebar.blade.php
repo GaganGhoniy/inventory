@@ -93,7 +93,7 @@
                                 @hasanyrole('root admin|super admin|Kepala Divisi Gudang|Karyawan Divisi Gudang|Divisi Marketing|Divisi Administrasi')
                                 <li class="{{ Request::segment(1) === 'laporan' ? 'active' : null }}">
                                         <a href="#uiElements" class="has-arrow"><i
-                                                        class="fa fa-diamond"></i><span>Laporan Transaksi</span></a>
+                                                        class="fa fa-diamond"></i><span>Laporan</span></a>
                                         <ul>@hasanyrole('root admin|super admin|Kepala Divisi Gudang|Karyawan Divisi Gudang|Divisi Marketing|Divisi Administrasi')
                                                 <li class="{{ Request::segment(2) === 'masuk' ? 'active' : null }}"><a
                                                                 href="{{route('laporan.masuk')}}">Laporan Barang

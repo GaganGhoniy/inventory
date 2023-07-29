@@ -11,7 +11,6 @@
                 <hr>
                 <p>Dicetak Pada {{ $date }}</p>
             </th>
-            
         </tr>
         <tr>
             
@@ -49,5 +48,8 @@
                 {{-- <td>Rp. {{ number_format($item->stok * $item->masuk[0]->harga) }}</td> --}}
             </tr>
         @endforeach
+        <tr>
+            TTD 
+        </tr>
     </tbody>
 </table>

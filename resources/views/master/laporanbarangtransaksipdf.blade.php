@@ -4,7 +4,7 @@
             {{-- <img src="{{ asset('assets/images/Logo Dakonan.png') }}" alt=""> --}}
         </td>
         <td>
-            <h1 style="text-align: center; margin-top: 30px">PT. DAKONAN MAS <br> Laporan Persediaan Barang</h1>
+            <h1 style="text-align: center; margin-top: 30px">PT. DAKONAN MAS <br> Laporan Transaksi Barang</h1>
         </td>
         <td style="width: auto">
             
@@ -78,14 +78,14 @@
                 <td colspan="3" style="text-align: center; padding: 4px">{{ $keluar->created_at}}</td>
                 <td style="text-align: center; padding: 4px">0</td>
                 <td style="text-align: center; padding: 4px">Rp. 0</td>
-                <td style="text-align: center;">Rp. 0</td>
-                <td style="text-align: center;">@if($keluar){{ $keluar->total_item }} @else Rp. 0 @endif</td>
-                <td style="text-align: center;">@if($keluar->persen != null){{ $keluar->persen }}% @else 0% @endif</td>
-                <td style="text-align: center;">@if($keluar)Rp. {{ number_format($keluar->harga,0,'','.') }}@else Rp. 0 @endif</td>
-                <td style="text-align: center;">@if($keluar)Rp. {{ number_format($keluar->total_harga,0,'','.') }}@else Rp. 0 @endif</td>
-                <td style="text-align: center;">@if($keluar){{ $keluar->stok_akhir }}@else Rp. 0 @endif</td>
-                <td style="text-align: center;">@if($keluar)Rp. {{ number_format($keluar->harga,0,'','.') }}@else Rp. 0 @endif</td>
-                <td style="text-align: center;">@if($keluar)Rp. {{ number_format($keluar->stok_akhir * $keluar->harga,0,'','.') }}@else Rp. 0 @endif</td>
+                <td style="text-align: center; padding: 4px">Rp. 0</td>
+                <td style="text-align: center; padding: 4px">@if($keluar){{ $keluar->total_item }} @else Rp. 0 @endif</td>
+                <td style="text-align: center; padding: 4px">@if($keluar->persen != null){{ $keluar->persen }}% @else 0% @endif</td>
+                <td style="text-align: center; padding: 4px">@if($keluar)Rp. {{ number_format($keluar->harga,0,'','.') }}@else Rp. 0 @endif</td>
+                <td style="text-align: center; padding: 4px">@if($keluar)Rp. {{ number_format($keluar->total_harga,0,'','.') }}@else Rp. 0 @endif</td>
+                <td style="text-align: center; padding: 4px">@if($keluar){{ $keluar->stok_akhir }}@else Rp. 0 @endif</td>
+                <td style="text-align: center; padding: 4px">@if($keluar)Rp. {{ number_format($keluar->harga,0,'','.') }}@else Rp. 0 @endif</td>
+                <td style="text-align: center; padding: 4px">@if($keluar)Rp. {{ number_format($keluar->stok_akhir * $keluar->harga,0,'','.') }}@else Rp. 0 @endif</td>
             </tr>
             @endforeach
             <?php

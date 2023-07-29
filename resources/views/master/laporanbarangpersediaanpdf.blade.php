@@ -31,9 +31,9 @@
     <tbody>
         @foreach ($barang as $item)
             <tr>
-                <td style="text-align: left; padding: 4px">{{ $item->kode_barang }}</td>
-                <td style="text-align: center; padding: 4px">{{ $item->merk->merk }}</td>
-                <td style="text-align: left; padding: 4px"><?php echo wordwrap($item->nama_barang, 40, "<br>\n"); ?></td>
+                <td style="text-align: left; padding: 4px; width: 15px;">{{ $item->kode_barang }}</td>
+                <td style="text-align: left; padding: 4px; width: 40px;">{{ $item->merk->merk }}</td>
+                <td style="text-align: left; padding: 4px; width: 120px;"><?php echo wordwrap($item->nama_barang, 40, "<br>\n"); ?></td>
                 <td style="text-align: center; padding: 4px">{{ $item->tempat_penyimpanan }}</td>
                 <td style="text-align: center; padding: 4px">{{ $item->stok }}</td>
             </tr>

@@ -34,9 +34,9 @@
         @foreach ($barang as $item)
         @if ((int) $item->stok <= (int) $item->safety_stock)
             <tr style="text-align: center;">
-                <td style="text-align: left; padding: 4px">{{ $item->kode_barang }}</td>
-                <td style="text-align: left; padding: 4px"><b>{{ $item->merk->merk }}</b></td>
-                <td style="text-align: left; padding: 4px"><?php echo wordwrap($item->nama_barang, 35, "<br>\n"); ?></td>
+                <td style="text-align: left; padding: 4px; width: 15px;">{{ $item->kode_barang }}</td>
+                <td style="text-align: left; padding: 4px; width: 40px;"><b>{{ $item->merk->merk }}</b></td>
+                <td style="text-align: left; padding: 4px; width: 120px;"><?php echo wordwrap($item->nama_barang, 35, "<br>\n"); ?></td>
                 <td style="text-align: left; padding: 4px"><?php echo wordwrap($item->supliyer->nama, 35, "<br>\n"); ?></td>
                 <td style="text-align: center; padding: 4px">{{ $item->stok }}</td>
                 <td style="text-align: center; padding: 4px">{{ $item->safety_stock }}</td>

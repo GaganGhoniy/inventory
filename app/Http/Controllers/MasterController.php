@@ -111,10 +111,32 @@ class MasterController extends Controller
 
     public function cetaklaporanBarangMasuk()
     {
+        $barang = Barang::with('masuk')->get();
+        $date = date("d-m-Y");
+
+        // Download PDF
+        // $dompdf = PDF::loadView('master.laporanbarangmasukpdf', ['barang' => $barang, 'date' => $date]);
+        // $dompdf->setPaper('A4', 'potrait');
+        // $dompdf->render();
+        // return $dompdf->stream('laporanbarangmasuk.pdf');
+
+        // Buat View
+        return view('master.laporanbarangmasukpdf', ['barang' => $barang, 'date' => $date]);
     }
 
     public function cetaklaporanBarangKeluar()
     {
+        $barang = Barang::with('keluar')->get();
+        $date = date("d-m-Y");
+
+        // Download PDF
+        // $dompdf = PDF::loadView('master.laporanbarangkeluarpdf', ['barang' => $barang, 'date' => $date]);
+        // $dompdf->setPaper('A4', 'potrait');
+        // $dompdf->render();
+        // return $dompdf->stream('laporanbarangkeluar.pdf');
+
+        // Buat View
+        return view('master.laporanbarangkeluarpdf', ['barang' => $barang, 'date' => $date]);
     }
 
     public function cetaklaporanBarangTransaksi()
@@ -172,12 +194,12 @@ class MasterController extends Controller
         }
         
         // Dowonload PDF
-        $dompdf = PDF::loadView('master.laporanbarangrestokpdf', ['barang' => $barang, 'date' => $date]);
-        $dompdf->setPaper('A4', 'potrait');
-        $dompdf->render();
-        return $dompdf->stream('laporanbarangrestok.pdf');
+        // $dompdf = PDF::loadView('master.laporanbarangrestokpdf', ['barang' => $barang, 'date' => $date]);
+        // $dompdf->setPaper('A4', 'potrait');
+        // $dompdf->render();
+        // return $dompdf->stream('laporanbarangrestok.pdf');
 
         // Buat View
-        // return view('master.laporanbarangrestokpdf', ['barang' => $barang, 'date' => $date]);
+        return view('master.laporanbarangrestokpdf', ['barang' => $barang, 'date' => $date]);
     }
 }

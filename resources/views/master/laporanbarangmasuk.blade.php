@@ -51,7 +51,7 @@
                             <tr>
                                 <td colspan="3" style="text-align: right;"><b>Jumlah</b></td>
                                 <td style="text-align: center;"><b>{{ $sum_item }}</b></td>
-                                <td style="text-align: right;"><b>Rp. {{ number_format($sum_harga,0,'','.') }}</b></td>
+                                <td style="text-align: right;"></td>
                                 <td style="text-align: right;"><b>Rp. {{ number_format($sum_total_harga,0,'','.') }}</b></td>
                             </tr>
                             <?php 
@@ -63,7 +63,7 @@
                             <tr>
                                 <td colspan="3" style="text-align: right;"><b>Total Transaksi Masuk</b></td>
                                 <td style="text-align: center;"><b>{{ $tot_item }}</b></td>
-                                <td style="text-align: right;"><b>Rp. {{ number_format($tot_harga,0,'','.') }}</b></td>
+                                <td style="text-align: right;"></td>
                                 <td style="text-align: right;"><b>Rp. {{ number_format($tot_total_harga,0,'','.') }}</b></td>
                             </tr>
                         </tbody>

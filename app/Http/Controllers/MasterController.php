@@ -128,7 +128,7 @@ class MasterController extends Controller
     {
         $barang = Barang::with('keluar')->get();
         $date = date("d-m-Y");
-
+        
         // Download PDF
         // $dompdf = PDF::loadView('master.laporanbarangkeluarpdf', ['barang' => $barang, 'date' => $date]);
         // $dompdf->setPaper('A4', 'potrait');
@@ -167,13 +167,13 @@ class MasterController extends Controller
         // dd($barang);
 
         // Download PDF
-        $dompdf = PDF::loadView('master.laporanbarangpersediaanpdf', ['barang' => $barang, 'date' => $date]);
-        $dompdf->setPaper('A4', 'potrait');
-        $dompdf->render();
-        return $dompdf->stream('laporanbarangpersediaan.pdf');
+        // $dompdf = PDF::loadView('master.laporanbarangpersediaanpdf', ['barang' => $barang, 'date' => $date]);
+        // $dompdf->setPaper('A4', 'potrait');
+        // $dompdf->render();
+        // return $dompdf->stream('laporanbarangpersediaan.pdf');
 
         // Buat View
-        // return view('master.laporanbarangpersediaanpdf', ['barang' => $barang, 'date' => $date]);
+        return view('master.laporanbarangpersediaanpdf', ['barang' => $barang, 'date' => $date]);
 
     }
 

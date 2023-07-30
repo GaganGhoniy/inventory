@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
         Route::get('laporan-barang-transaksi',                'MasterController@laporanBarangTransaksi')->name('laporan.transaksi');
         Route::get('laporan-barang-transaksi-cetak',                'MasterController@cetaklaporanBarangTransaksi')->name('laporan.cetaklaporanBarangTransaksi');
         Route::get('laporan-barang-persediaan',                'MasterController@laporanBarangPersediaan')->name('laporan.persediaan');
+        Route::post('laporan-barang-persediaan',                'MasterController@laporanBarangPersediaanSelect')->name('laporan.persediaan.select');
         Route::get('laporan-barang-persediaan-cetak',                'MasterController@cetaklaporanbarangpersediaan')->name('laporan.cetaklaporanbarangpersediaan');
         Route::get('laporan-barang-restok',                'MasterController@laporanBarangRestok')->name('laporan.restok');
         Route::post('laporan-barang-restok',                'MasterController@laporanBarangRestokSearch')->name('laporan.restok.search');

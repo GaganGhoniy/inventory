@@ -17,19 +17,28 @@
                         <div class="col-sm-6">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    <div class="d-flex float-right">
-                                        <div class="form-group">
-                                            <select class="form-control ml-2" aria-label="Default select example">
-                                                <option selected>Pilih Tempat Penyimpanan</option>
-                                                <option value="1">GUDANG 1</option>
-                                                <option value="2">GUDANG 2</option>
-                                                <option value="3">GUDANG 3</option>
-                                              </select>
+                                    <form action="{{ route('laporan.persediaan.select') }}" method="post">
+                                        <div class="d-flex float-right">
+                                            @csrf
+                                            <div class="form-group">
+                                                <select class="form-control ml-2" name="select"
+                                                    aria-label="Default select example">
+                                                    <option value="" selected>Pilih Tempat Penyimpanan</option>
+                                                    <option value="GUDANG 1">GUDANG 1</option>
+                                                    <option value="GUDANG 2">GUDANG 2</option>
+                                                    <option value="GUDANG 3">GUDANG 3</option>
+                                                </select>
+                                            </div>
+                                            <div class="button-search ml-4">
+                                                <button type="submit" class="btn btn-primary">Filter</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                                 <div class="col-sm-2">
-                                    <a href="{{ route('laporan.cetaklaporanbarangpersediaan') }}" type="button" style="float:right; border-radius:5px;" class="btn btn-primary"><i class="fa fa-print"></i></a>
+                                    <a href="{{ route('laporan.cetaklaporanbarangpersediaan', ['select' => $searchKeyword]) }}" type="button"
+                                        style="float:right; border-radius:5px;" class="btn btn-primary"><i
+                                            class="fa fa-print"></i></a>
                                 </div>
                             </div>
                         </div>

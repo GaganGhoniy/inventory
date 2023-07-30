@@ -81,11 +81,29 @@ class MasterController extends Controller
 
     public function laporanBarangPersediaan()
     {
+        $searchKeyword = '';
         $barang = Barang::with(['masuk', 'keluar' => function ($query) {
             return $query->where('stok_akhir', '!=', 0);
         }])->get();
         // dd($barang);
-        return view('master.laporanbarangpersediaan', compact('barang'));
+        return view('master.laporanbarangpersediaan', compact('barang', 'searchKeyword'));
+    }
+
+    public function laporanBarangPersediaanSelect(Request $request)
+    {
+        $searchKeyword = $request->get('select');
+
+        if($searchKeyword !== null){
+            $barang = Barang::with(['masuk', 'keluar' => function ($query) {
+                return $query->where('stok_akhir', '!=', 0);
+            }])->where('tempat_penyimpanan', $searchKeyword)->get();
+        } else {
+            $barang = Barang::with(['masuk', 'keluar' => function ($query) {
+                return $query->where('stok_akhir', '!=', 0);
+            }])->get();
+        }
+        // dd($barang);
+        return view('master.laporanbarangpersediaan', compact('barang', 'searchKeyword'));
     }
 
     public function laporanBarangRestok()
@@ -154,13 +172,20 @@ class MasterController extends Controller
         return view('master.laporanbarangtransaksipdf', ['barang' => $barang, 'date' => $date]);
     }
 
-    public function cetaklaporanbarangpersediaan()
+    public function cetaklaporanbarangpersediaan(Request $request)
     {
-        // $dompdf = new Dompdf();
-        $barang = Barang::with(['masuk' => function ($query) {
-            return $query->where('stok_akhir', '!=', 0);
-        }])->get();
+        $searchKeyword = $request->get('select');
         $date = date("d-m-Y");
+
+        if($searchKeyword !== null){
+            $barang = Barang::with(['masuk' => function ($query) {
+                return $query->where('stok_akhir', '!=', 0);
+            }])->where('tempat_penyimpanan', $searchKeyword)->get();
+        } else {
+            $barang = Barang::with(['masuk' => function ($query) {
+                return $query->where('stok_akhir', '!=', 0);
+            }])->get();
+        }
 
         // Convert $barang object to array
         // $barangArray = $barang->toArray();

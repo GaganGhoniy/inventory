@@ -1,7 +1,7 @@
 <table style="margin: 0 auto; width: 1000px;">
     <tr>
         <td style="width: auto">
-            {{-- <img src="{{ asset('assets/images/Logo Dakonan.png') }}" alt=""> --}}
+            <img src="{{ public_path('assets/images/Logo Dakonan.png') }}" alt="">
         </td>
         <td>
             <h1 style="text-align: center; margin-top: 30px">PT. DAKONAN MAS <br> Laporan Transaksi Barang</h1>

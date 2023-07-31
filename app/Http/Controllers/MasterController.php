@@ -163,13 +163,13 @@ class MasterController extends Controller
         $date = date("d-m-Y");
 
         // Download PDF
-        // $dompdf = PDF::loadView('master.laporanbarangtransaksipdf', ['barang' => $barang, 'date' => $date]);
-        // $dompdf->setPaper('A4', 'landscape');
-        // $dompdf->render();
-        // return $dompdf->stream('laporanbarangtransaksi.pdf');
+        $dompdf = PDF::loadView('master.laporanbarangtransaksipdf', ['barang' => $barang, 'date' => $date]);
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+        return $dompdf->stream('laporanbarangtransaksi.pdf');
 
         // Buat View
-        return view('master.laporanbarangtransaksipdf', ['barang' => $barang, 'date' => $date]);
+        // return view('master.laporanbarangtransaksipdf', ['barang' => $barang, 'date' => $date]);
     }
 
     public function cetaklaporanbarangpersediaan(Request $request)
@@ -192,13 +192,13 @@ class MasterController extends Controller
         // dd($barang);
 
         // Download PDF
-        // $dompdf = PDF::loadView('master.laporanbarangpersediaanpdf', ['barang' => $barang, 'date' => $date]);
-        // $dompdf->setPaper('A4', 'potrait');
-        // $dompdf->render();
-        // return $dompdf->stream('laporanbarangpersediaan.pdf');
+        $dompdf = PDF::loadView('master.laporanbarangpersediaanpdf', ['barang' => $barang, 'date' => $date]);
+        $dompdf->setPaper('A4', 'potrait');
+        $dompdf->render();
+        return $dompdf->stream('laporanbarangpersediaan.pdf');
 
         // Buat View
-        return view('master.laporanbarangpersediaanpdf', ['barang' => $barang, 'date' => $date]);
+        // return view('master.laporanbarangpersediaanpdf', ['barang' => $barang, 'date' => $date]);
 
     }
 
